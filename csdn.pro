@@ -28,6 +28,13 @@ FORMS    += mainwindow.ui
 DISTFILES += \
     files.txt
 
+            copyfile.commands = \
+                $${QMAKE_COPY} $$PWD/files.txt $$OUT_PWD
+            copyfile.CONFIG += directory no_link no_clean no_check_exist
+            copyfile.target = copyfile
+            QMAKE_EXTRA_TARGETS += copyfile
+            POST_TARGETDEPS += copyfile
+
 #####以下配置 pkg-config  
 mingw{
     equals(QMAKE_HOST.os, Windows){
