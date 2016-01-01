@@ -64,7 +64,7 @@ int CDownLoad::DownLoad(QString szUrl)
         // curl_easy_setopt(curl, CURLOPT_WRITEDATA, &ftpfile);
         
         /* Switch on full protocol/debug output */ 
-        curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+        //curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
         
         res = curl_easy_perform(curl);
         
