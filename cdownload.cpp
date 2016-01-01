@@ -31,12 +31,14 @@ int CDownLoad::OnWork()
         m_vUrl.push_back(szUrl);
     }
 
-    std::vector<QString>::iterator it;
-    for(it = m_vUrl.begin(); it != m_vUrl.end(); it++)
+    for(int i = 0; i < 300; i++)
     {
-        DownLoad(*it);
+        std::vector<QString>::iterator it;
+        for(it = m_vUrl.begin(); it != m_vUrl.end(); it++)
+        {
+            DownLoad(*it);
+        }
     }
-    
 }
 
 static size_t my_fwrite(void *buffer, size_t size, size_t nmemb, void *stream)

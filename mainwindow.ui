@@ -50,7 +50,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>300</string>
+     <string>30</string>
     </property>
    </widget>
   </widget>
@@ -60,7 +60,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>23</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
