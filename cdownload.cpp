@@ -30,6 +30,10 @@ int CDownLoad::OnWork(int nLoopNumber)
         QString szUrl(line);
         if(szUrl.right(1) == "\n")
             szUrl = szUrl.left(szUrl.length() -1);
+        if("#" == szUrl.left(1))
+            continue;
+        if("end" == szUrl)
+            break;
         m_vUrl.push_back(szUrl);
     }
 
@@ -40,6 +44,7 @@ int CDownLoad::OnWork(int nLoopNumber)
         {
             DownLoad(*it);
             g_Number.m_TotalNumber++;
+            g_Number.SetEndTime();
         }
         g_Number.m_LoopNumber++;
     }
@@ -48,6 +53,9 @@ int CDownLoad::OnWork(int nLoopNumber)
 
 static size_t my_fwrite(void *buffer, size_t size, size_t nmemb, void *stream)
 {
+    /*QByteArray b((const char*)buffer, (int)(size * nmemb));
+    QString s(b);
+    qDebug () << s;*/
     return  size * nmemb;
 }
 
