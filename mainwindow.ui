@@ -16,24 +16,20 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Thread Number:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="edNumber">
-        <property name="text">
-         <string>30</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Thread Number:</string>
+      </property>
+     </widget>
     </item>
-    <item row="1" column="0">
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="edNumber">
+      <property name="text">
+       <string>100</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="2">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QLabel" name="label_2">
@@ -45,7 +41,7 @@
       <item>
        <widget class="QLineEdit" name="edLoopNumer">
         <property name="text">
-         <string>300</string>
+         <string>30</string>
         </property>
        </widget>
       </item>
@@ -87,7 +83,39 @@
       </item>
      </layout>
     </item>
-    <item row="4" column="0">
+    <item row="4" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLineEdit" name="edBrower"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pbBrower">
+        <property name="text">
+         <string>Brower</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="5" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Use Time:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lbUseTime">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="6" column="0">
      <widget class="QPushButton" name="pbStart">
       <property name="text">
        <string>Start</string>

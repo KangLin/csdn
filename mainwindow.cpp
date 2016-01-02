@@ -32,6 +32,7 @@ void OnThread(void *para)
 void MainWindow::on_pbStart_clicked()
 {
     m_Timer.start(1000);
+    g_Number.m_StartTime = QDateTime::currentDateTime();
     m_loopNumer = ui->edLoopNumer->text().toInt();
     int num =  ui->edNumber->text().toInt();
     for(int i = 0; i < num; i++)
@@ -45,4 +46,5 @@ void MainWindow::timeout()
 {
     ui->lbLoopNumber->setText(QString::number(g_Number.m_LoopNumber));
     ui->lbTotalNumber->setText(QString::number(g_Number.m_TotalNumber));
+    ui->lbUseTime->setText(QString::number(g_Number.GetUserTime()));
 }
