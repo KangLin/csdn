@@ -4,6 +4,9 @@
 #include <QFile>
 #include <QApplication>
 #include <QThread>
+#include <cnumber.h>
+
+extern CNumber g_Number;
 
 CDownLoad::CDownLoad(QObject *parent): QObject(parent)
 {
@@ -13,9 +16,8 @@ CDownLoad::~CDownLoad()
 {
 }
 
-int CDownLoad::OnWork()
+int CDownLoad::OnWork(int nLoopNumber)
 {
-    qDebug() << "CDownLoad::OnWork";
     QString szFile = qApp->applicationDirPath() + "/files.txt";
     QFile f(szFile);
     if (!f.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -31,14 +33,17 @@ int CDownLoad::OnWork()
         m_vUrl.push_back(szUrl);
     }
 
-    for(int i = 0; i < 300; i++)
+    for(int i = 0; i < nLoopNumber; i++)
     {
         std::vector<QString>::iterator it;
         for(it = m_vUrl.begin(); it != m_vUrl.end(); it++)
         {
             DownLoad(*it);
+            g_Number.m_TotalNumber++;
         }
+        g_Number.m_LoopNumber++;
     }
+    return 0;
 }
 
 static size_t my_fwrite(void *buffer, size_t size, size_t nmemb, void *stream)
@@ -64,7 +69,7 @@ int CDownLoad::DownLoad(QString szUrl)
         // curl_easy_setopt(curl, CURLOPT_WRITEDATA, &ftpfile);
         
         /* Switch on full protocol/debug output */ 
-        curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+        //curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
         
         res = curl_easy_perform(curl);
         
@@ -72,4 +77,5 @@ int CDownLoad::DownLoad(QString szUrl)
         curl_easy_cleanup(curl);
         
     }
+    return 0;
 }
