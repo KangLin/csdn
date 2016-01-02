@@ -16,7 +16,7 @@ public:
     CDownLoad(QObject *parent = NULL);
     ~CDownLoad();
     
-    int OnWork();
+    int OnWork(int nLoopNumber);
 
 private:
     std::vector<QString> m_vUrl;

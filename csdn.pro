@@ -18,10 +18,12 @@ CONFIG += c++0x
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    cdownload.cpp
+    cdownload.cpp \
+    cnumber.cpp
 
 HEADERS  += mainwindow.h \
-    cdownload.h
+    cdownload.h \
+    cnumber.h
 
 FORMS    += mainwindow.ui
 
