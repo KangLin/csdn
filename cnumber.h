@@ -9,6 +9,7 @@ class CNumber
 public:
     CNumber();
 
+     int Init();
      int SetEndTime();
      QString GetUserTime();
      

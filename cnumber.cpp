@@ -5,6 +5,14 @@ CNumber::CNumber()
 {
 }
 
+int CNumber::Init()
+{
+    m_StartTime = QDateTime::currentDateTime();
+    SetEndTime();
+    m_TotalNumber = 0;
+    m_LoopNumber = 0;
+}
+
 int CNumber::SetEndTime()
 {
     m_mutext.lock();
@@ -20,7 +28,7 @@ QString CNumber::GetUserTime()
     m_mutext.unlock();
     QTime time(0, 0, 0, 0);
     QTime t = time.addSecs(nSec);
-    qDebug() << "sec:" << nSec;
+    //qDebug() << "sec:" << nSec;
     return t.toString("hh:mm:ss");
 }
 

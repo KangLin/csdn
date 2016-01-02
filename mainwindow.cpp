@@ -32,7 +32,7 @@ void OnThread(void *para)
 void MainWindow::on_pbStart_clicked()
 {
     m_Timer.start(1000);
-    g_Number.m_StartTime = QDateTime::currentDateTime();
+    g_Number.Init();
     m_loopNumer = ui->edLoopNumer->text().toInt();
     int num =  ui->edNumber->text().toInt();
     for(int i = 0; i < num; i++)
