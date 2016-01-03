@@ -18,7 +18,7 @@ int CNumber::SetEndTime()
     m_mutext.lock();
     m_EndTime = QDateTime::currentDateTime();
     m_mutext.unlock();
-}
+} 
 
 QString CNumber::GetUserTime()
 {
