@@ -11,6 +11,7 @@ int CNumber::Init()
     SetEndTime();
     m_TotalNumber = 0;
     m_LoopNumber = 0;
+    return 0;
 }
 
 int CNumber::SetEndTime()
@@ -18,6 +19,7 @@ int CNumber::SetEndTime()
     m_mutext.lock();
     m_EndTime = QDateTime::currentDateTime();
     m_mutext.unlock();
+    return 0;
 } 
 
 QString CNumber::GetUserTime()

@@ -32,12 +32,14 @@ DISTFILES += \
  equals(QMAKE_HOST.os, Windows){
     isEmpty(QMAKE_SH){
         FILE = $$system_path($$PWD/files.txt)
+        FILE_OUT = $$system_path($$OUT_PWD)
     } else {
         FILE = $$PWD/files.txt
+        FILE_OUT = $$OUT_PWD
     }
 }
 copyfile.commands = \
-    $${QMAKE_COPY} $$FILE $$OUT_PWD
+    $${QMAKE_COPY} $$FILE $${FILE_OUT}
 copyfile.CONFIG += directory no_link no_clean no_check_exist
 copyfile.target = copyfile
 QMAKE_EXTRA_TARGETS += copyfile
@@ -64,6 +66,8 @@ mingw{
 } else {
     PKG_CONFIG_PATH="$${THIRD_LIBRARY_PATH}/lib/pkgconfig:$${TARGET_PATH}/pkgconfig:$$(PKG_CONFIG_PATH)"
 }
+INCLUDEPATH += $${THIRD_LIBRARY_PATH}/include
+LIBS += -L$${THIRD_LIBRARY_PATH}/lib 
 
 isEmpty(PKG_CONFIG) : PKG_CONFIG=$$(PKG_CONFIG)
 
@@ -79,9 +83,9 @@ sysroot.name = PKG_CONFIG_SYSROOT_DIR
 sysroot.value = $$PKG_CONFIG_SYSROOT_DIR
 libdir.name = PKG_CONFIG_LIBDIR
 libdir.value = $$PKG_CONFIG_LIBDIR
-path.name = PKG_CONFIG_PATH
-path.value = $$PKG_CONFIG_PATH
-qtAddToolEnv(PKG_CONFIG, sysroot libdir path, SYS)
+pkgconfigpath.name = PKG_CONFIG_PATH
+pkgconfigpath.value = $$PKG_CONFIG_PATH
+qtAddToolEnv(PKG_CONFIG, sysroot libdir pkgconfigpath, SYS)
 
 equals(QMAKE_HOST.os, Windows): \
     PKG_CONFIG += 2> NUL
